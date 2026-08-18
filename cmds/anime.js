@@ -10,7 +10,7 @@
 const { kord, extractUrlsFromString, fetchWaifu, getJson, prefix, wtype, ss } = require("../core")
 const fs = require("fs");
 const path = require("path");
-const fetch = require("node-fetch")
+
 
 kord({
     cmd: "anime",

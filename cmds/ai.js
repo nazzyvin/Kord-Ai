@@ -181,6 +181,15 @@ kord({
   }
 })
 
+async function getAIStatus() {
+  const cfg = (await getData("chatbot_cfg")) || chatc
+  return {
+    status: cfg.active || cfg.global ? "online" : "offline",
+    activeSessions: cfg.activeChats?.length ?? 0,
+    timestamp: Date.now(),
+  }
+}
+
 var chatc = {
     active: false,
     global: false,

@@ -38,7 +38,6 @@ kord({
       try {
         if (!(m.image || m.quoted.image)) return await m.send("_Reply to a image_")
         await m.react("⏳")
-        var mss = m.image ? m : m.quoted.image ? m.quoted : null
         var media = await m.client.downloadMediaMessage(m.image ? m : m.quoted.image ? m.quoted: null)
         var pic = await upscaleImage(media)
         await m.react("")

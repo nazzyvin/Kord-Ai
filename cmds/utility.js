@@ -7,11 +7,11 @@
  * -------------------------------------------------------------------------------
  */
 
-const { kord, extractUrlsFromString, getJson, Baileys, transcribeATT, prefix, wtype, config, ss } = require("../core")
+const { kord, extractUrlsFromString, getJson, Baileys, transcribeATT, prefix, wtype, config } = require("../core")
 const fs = require("fs");
 const path = require("path");
 const PDFDocument = require("pdfkit")
-const fetch = require("node-fetch")
+
 const { tiny, fancytext, listall } = require('../core/store/style-font');
 const os = require('os');
 const Jimp = require('jimp');
@@ -764,7 +764,7 @@ kord({
     if (!(m.image || m.video || m.quoted.image || m.quoted.video)) return await m.send("_*reply to an image/video*_")
     var pth = await m.client.dlandsave((m.image || m.video) ? m : (m.quoted.image || m.quoted.video) ? m.quoted : null)
     var ext = pth.split(".")[1]
-    var opath = path.join(bin, `compressed_${Date.now()}.${ext}`)
+    var opath = path.join(os.tmpdir(), `compressed_${Date.now()}.${ext}`)
     try {
       if (ext.match(/(jpg|jpeg|png|webp)/)) {
       const image = await read(pth);

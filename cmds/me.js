@@ -196,7 +196,7 @@ cmd: "list",
 }, async (m, text) => {
   try {
     let count = 1
-    list = ""
+    let list = ""
     commands.map((cmd => {
     if (cmd.cmd && cmd.desc) {
     const firstAlias = cmd.cmd.split('|')[0].trim();

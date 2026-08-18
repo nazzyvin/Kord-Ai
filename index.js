@@ -1,10 +1,15 @@
 const { sock } = require("./core/sock")
 const { getPlatformInfo } = require("./core/dclient")
 const { spawn } = require("child_process")
+const fs = require("fs")
 const http = require("http")
+const path = require("path")
 
 const run = async () => {
   try {
+    const dataDir = path.join(__dirname, "data")
+    if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true })
+
     const platform = getPlatformInfo?.().platform?.toLowerCase() || ""
 
     if (!platform.includes("pterodactyl")) {
